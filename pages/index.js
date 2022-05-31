@@ -11,6 +11,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CallToAction from "../src/components/ui/CallToAction";
 import Link from "../src/Link";
 import Head from "next/head";
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
 
 // animations
 import animationData from "../src/animations/landingAnimation/data";
@@ -266,7 +270,8 @@ export default function LandingPage(props) {
             </Button>
           </Grid>
           <Grid item>
-            <img
+            <LazyLoadImage
+              threshold={200}
               className={classes.icon}
               alt="custom software icon"
               src={"/CustomSoftwareIcon.svg"}
@@ -314,7 +319,8 @@ export default function LandingPage(props) {
             </Button>
           </Grid>
           <Grid item>
-            <img
+            <LazyLoadImage
+              threshold={200}
               className={classes.icon}
               alt="mobile phone icon"
               src={"/mobileIcon.svg"}
@@ -368,7 +374,8 @@ export default function LandingPage(props) {
             </Button>
           </Grid>
           <Grid item>
-            <img
+            <LazyLoadImage
+              threshold={200}
               className={classes.icon}
               alt="website icon"
               src={"/websiteIcon.svg"}
@@ -505,13 +512,16 @@ export default function LandingPage(props) {
               </Grid>
             </Grid>
           </Grid>
-
-          <div className={classes.infoBackground} />
+          <LazyLoadComponent threshold={750}>
+            <div className={classes.infoBackground} />
+          </LazyLoadComponent>
         </Grid>
       </Grid>
       <Grid item>
         {/* The CallToAction Block */}
-        <CallToAction setValue={props.setValue} />
+        <LazyLoadComponent threshold={750}>
+          <CallToAction setValue={props.setValue} />
+        </LazyLoadComponent>
       </Grid>
     </Grid>
   );

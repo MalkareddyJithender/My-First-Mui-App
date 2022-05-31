@@ -3,6 +3,7 @@ import Link from "../../Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -217,7 +218,8 @@ export default function Footer(props) {
           </Grid>
         </Grid>
       </Hidden>
-      <img
+      <LazyLoadImage
+        threshold={450}
         src={"/FooterAdornment.svg"}
         alt="black decorative slash"
         className={classes.adornment}
@@ -235,7 +237,8 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blanck"
         >
-          <img
+          <LazyLoadImage
+            threshold={450}
             alt="facebook logo"
             src={"/facebook.svg"}
             className={classes.logo}
@@ -248,7 +251,8 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blanck"
         >
-          <img
+          <LazyLoadImage
+            threshold={450}
             alt="instagram logo"
             src={"/instagram.svg"}
             className={classes.logo}
@@ -261,7 +265,8 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blanck"
         >
-          <img
+          <LazyLoadImage
+            threshold={450}
             alt="twitter logo"
             src={"/twitter.svg"}
             className={classes.logo}

@@ -6,6 +6,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Lottie from "react-lottie";
 import CallToAction from "../src/components/ui/CallToAction";
 import Head from "next/head";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import technologyAnimation from "../src/animations/technologyAnimation/data.json";
 
@@ -414,7 +415,8 @@ export default function Revolution(props) {
             </Grid>
           </Grid>
           <Grid item lg style={{ alignSelf: "center" }}>
-            <img
+            <LazyLoadImage
+              threshold={550}
               src={section.icon}
               alt={section.iconAlt}
               width="100%"

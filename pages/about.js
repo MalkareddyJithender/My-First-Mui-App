@@ -7,6 +7,10 @@ import Avatar from "@material-ui/core/Avatar";
 import Hidden from "@material-ui/core/Hidden";
 import CallToAction from "../src/components/ui/CallToAction";
 import Head from "next/head";
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
 
 const useStyles = makeStyles((theme) => ({
   rowContainer: {
@@ -217,11 +221,13 @@ export default function About(props) {
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar
-            src={"/founder.jpg"}
-            alt="founder"
-            className={classes.avatar}
-          />
+          <LazyLoadComponent threshold={250}>
+            <Avatar
+              src={"/founder.jpg"}
+              alt="founder"
+              className={classes.avatar}
+            />
+          </LazyLoadComponent>
         </Grid>
 
         <Grid
@@ -258,7 +264,8 @@ export default function About(props) {
             style={{ marginBottom: matchesMD ? "2.5rem" : 0 }}
           >
             <Grid item>
-              <img
+              <LazyLoadImage
+                threshold={250}
                 src={"/yearbook.svg"}
                 alt="a page of year book"
                 style={{ maxWidth: matchesXS ? 250 : undefined }}
@@ -298,7 +305,8 @@ export default function About(props) {
             alignItems={matchesMD ? "center" : "flex-end"}
           >
             <Grid item>
-              <img
+              <LazyLoadImage
+                threshold={250}
                 src={"/puppy.svg"}
                 alt="my puppy"
                 style={{ maxWidth: matchesXS ? 250 : undefined }}

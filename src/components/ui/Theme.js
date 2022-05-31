@@ -87,6 +87,13 @@ const theme = createTheme({
     },
   },
   overrides: {
+    MuiListItem: {
+      root: {
+        "&.Mui-selected": {
+          backgroundColor: `rgba(0,0,0,0.17)`,
+        },
+      },
+    },
     MuiInputLabel: {
       root: {
         color: arcBlue,

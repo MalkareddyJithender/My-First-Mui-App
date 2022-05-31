@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -84,6 +84,8 @@ export default function Estimate() {
     backgroundColor: "",
   });
 
+  const myRef = useRef(null);
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -132,6 +134,10 @@ export default function Estimate() {
 
   // navigation to previous and next questions
   const previousQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
+
     const newQuestions = cloneDeep(questions);
     let currentlyActive = newQuestions.filter((question) => question.active);
 
@@ -149,6 +155,9 @@ export default function Estimate() {
   };
 
   const nextQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
     const newQuestions = cloneDeep(questions);
     let currentlyActive = newQuestions.filter((question) => question.active);
 
@@ -210,6 +219,9 @@ export default function Estimate() {
 
     switch (selectedOption.title) {
       case "Custom Software Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(selectedOption.title);
         setFeatures([]);
@@ -218,6 +230,9 @@ export default function Estimate() {
         setUsers("");
         break;
       case "iOS/Android App Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(selectedOption.title);
         setFeatures([]);
@@ -226,6 +241,9 @@ export default function Estimate() {
         setUsers("");
         break;
       case "Website Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(websiteQuestions);
         setService(selectedOption.title);
         setFeatures([]);
@@ -334,7 +352,24 @@ export default function Estimate() {
 
   const estimateDisabled = () => {
     let disabled = true;
+
+    // const selections = questions
+    //   .map((question) => question.options.filter((option) => option.selected))
+    //   .filter((arr) => arr.length === 0);
+
+    // we are only getting questions except one question ...
     const selections = questions
+      .filter(
+        (question) => question.title !== "Which features do you expect to use?"
+      )
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((arr) => arr.length === 0);
+
+    // only we are selecting feature selections
+    const featureSelections = questions
+      .filter(
+        (question) => question.title === "Which features do you expect to use?"
+      )
       .map((question) => question.options.filter((option) => option.selected))
       .filter((arr) => arr.length === 0);
 
@@ -342,12 +377,7 @@ export default function Estimate() {
       disabled = true;
     } else if (questions.length === 2 && selections.length === 1) {
       disabled = false;
-    } else if (
-      selections.length < 3 &&
-      questions[questions.length - 1].options.filter(
-        (option) => option.selected
-      ).length > 0
-    ) {
+    } else if (selections.length < 2 && featureSelections.length < 2) {
       disabled = false;
     }
     return disabled;
@@ -560,7 +590,7 @@ export default function Estimate() {
           .filter((question) => question.active)
           .map((question, index) => (
             <React.Fragment key={index}>
-              <Grid item>
+              <Grid item ref={myRef}>
                 <Typography
                   variant="h2"
                   align="center"

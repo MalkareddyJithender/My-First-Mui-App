@@ -88,7 +88,7 @@ const MobileApps = (props) => {
             <IconButton
               style={{ backgroundColor: "transparent" }}
               component={Link}
-              href="/customsoftware"
+              href="/customSoftware"
               onClick={() => props.setSelectedIndex(1)}
             >
               <img
@@ -100,7 +100,15 @@ const MobileApps = (props) => {
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2" align={matchesMD ? "center" : undefined}>
+            <Typography
+              variant="h2"
+              align={matchesMD ? "center" : undefined}
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                marginBottom: matchesXS ? "0.5rem" : null,
+                fontSize: "2.25rem",
+              }}
+            >
               iOS/Android App Development
             </Typography>
           </Grid>

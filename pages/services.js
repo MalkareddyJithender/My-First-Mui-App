@@ -30,14 +30,17 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     marginLeft: "2em",
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0px",
     },
   },
   serviceContainer: {
     marginTop: "10em",
     [theme.breakpoints.down("sm")]: {
       padding: "25px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: 5,
     },
   },
 }));
@@ -46,7 +49,7 @@ export default function Services(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  // const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Grid container direction="column">
@@ -112,7 +115,7 @@ export default function Services(props) {
             </Typography>
             <Button
               component={Link}
-              href="/mobileapps"
+              href="/mobileApps"
               onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(2);
@@ -167,7 +170,7 @@ export default function Services(props) {
             </Typography>
             <Button
               component={Link}
-              href="/customsoftware"
+              href="/customSoftware"
               onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(1);
@@ -216,7 +219,8 @@ export default function Services(props) {
               Reach more. Discover more. Sell more.
             </Typography>
             <Typography variant="subtitle1">
-              Optimized for search engines,built for speed.
+              Optimized for search engines,{matchesXS && <br />} built for
+              speed.
             </Typography>
             <Button
               component={Link}
@@ -238,7 +242,7 @@ export default function Services(props) {
               />
             </Button>
           </Grid>
-          <Grid item style={{ marginRight: "5em" }}>
+          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
               className={classes.icon}
               width="250em"

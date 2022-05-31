@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
     },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "1rem",
+      paddingRight: "1rem",
+    },
   },
   missionStatement: {
     fontStyle: "italic",

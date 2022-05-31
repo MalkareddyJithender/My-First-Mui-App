@@ -53,6 +53,7 @@ function Link(props) {
 
   return (
     <MuiLink
+      underline="none"
       component={NextComposed}
       className={className}
       ref={innerRef}

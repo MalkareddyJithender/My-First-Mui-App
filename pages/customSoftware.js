@@ -127,7 +127,15 @@ export default function CustomSoftware(props) {
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2" align={matchesMD ? "center" : undefined}>
+            <Typography
+              variant="h2"
+              align={matchesMD ? "center" : undefined}
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                fontSize: matchesXS ? "2.25rem" : null,
+                marginBottom: matchesXS ? "0.5rem" : null,
+              }}
+            >
               Custom Software Development
             </Typography>
           </Grid>
@@ -182,7 +190,7 @@ export default function CustomSoftware(props) {
             <IconButton
               style={{ backgroundColor: "transparent" }}
               component={Link}
-              href="/mobileapps"
+              href="/mobileApps"
               onClick={() => props.setSelectedIndex(2)}
             >
               <img
@@ -321,7 +329,7 @@ export default function CustomSoftware(props) {
           className={classes.itemContainer}
           md
         >
-          <Grid item md>
+          <Grid item md style={{ marginBottom: matchesXS ? "2rem" : null }}>
             <Lottie
               options={scaleOptions}
               isStopped={true}
@@ -436,11 +444,11 @@ export default function CustomSoftware(props) {
                 align={matchesSM ? "center" : undefined}
               >
                 Increasing effienceny increases profits, leaving you more time
-                to focus on your business, not busywork.
+                to focus on your business, not busy work.
               </Typography>
             </Grid>
           </Grid>
-          <Grid item md>
+          <Grid item md style={{ marginTop: matchesXS ? "2rem" : null }}>
             <Lottie
               options={automationOptions}
               isStopped={true}
@@ -455,7 +463,7 @@ export default function CustomSoftware(props) {
           className={classes.itemContainer}
           md
         >
-          <Grid item md>
+          <Grid item md style={{ marginBottom: matchesXS ? "2rem" : null }}>
             <Lottie
               options={uxOptions}
               isStopped={true}

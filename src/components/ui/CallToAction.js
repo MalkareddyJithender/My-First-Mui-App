@@ -54,6 +54,7 @@ const CallToAction = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Grid
@@ -78,7 +79,13 @@ const CallToAction = (props) => {
               <br />
               Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle2" style={{ fontSize: "1.5rem" }}>
+            <Typography
+              variant="subtitle2"
+              style={{
+                fontSize: matchesXS ? "1.25rem" : "1.5rem",
+                marginBottom: matchesXS ? "0.5rem" : null,
+              }}
+            >
               Take advantage of the 21st Century.
             </Typography>
             <Button

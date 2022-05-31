@@ -84,6 +84,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       padding: "25px",
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: 5,
+    },
   },
   revolutionBackground: {
     backgroundImage: `url(${"/repeatingBackground.svg"})`,
@@ -165,7 +168,15 @@ export default function LandingPage(props) {
           direction="row"
         >
           <Grid item sm className={classes.textContainer}>
-            <Typography align="center" variant="h2">
+            <Typography
+              align="center"
+              variant="h2"
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                fontSize: matchesXS ? "2.25rem" : null,
+                marginBottom: matchesXS ? "0.5rem" : null,
+              }}
+            >
               Bringing West Coast Technology
               <br /> to the Midwest
             </Typography>
@@ -236,7 +247,7 @@ export default function LandingPage(props) {
             </Typography>
             <Button
               component={Link}
-              href="/customsoftware"
+              href="/customSoftware"
               onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(1);
@@ -284,7 +295,7 @@ export default function LandingPage(props) {
             </Typography>
             <Button
               component={Link}
-              href="/mobileapps"
+              href="/mobileApps"
               onClick={() => {
                 props.setValue(1);
                 props.setSelectedIndex(2);
@@ -333,7 +344,8 @@ export default function LandingPage(props) {
               Reach more. Discover more. Sell more.
             </Typography>
             <Typography variant="subtitle1">
-              Optimized for search engines,built for speed.
+              Optimized for search engines,{matchesXS && <br />} built for
+              speed.
             </Typography>
             <Button
               component={Link}

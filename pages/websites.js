@@ -81,7 +81,7 @@ const Websites = (props) => {
             <IconButton
               style={{ backgroundColor: "transparent" }}
               component={Link}
-              href="/mobileapps"
+              href="/mobileApps"
               onClick={() => props.setSelectedIndex(2)}
             >
               <img
@@ -93,7 +93,15 @@ const Websites = (props) => {
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2" align={matchesMD ? "center" : undefined}>
+            <Typography
+              variant="h2"
+              align={matchesMD ? "center" : undefined}
+              style={{
+                lineHeight: matchesXS ? 1.1 : null,
+                fontSize: matchesXS ? "2.25rem" : null,
+                marginBottom: matchesXS ? "0.5rem" : null,
+              }}
+            >
               Website Development
             </Typography>
           </Grid>
